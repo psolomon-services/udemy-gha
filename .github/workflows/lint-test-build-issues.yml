@@ -1,0 +1,41 @@
+name: Test Project
+on:
+  - workflow_dispatch
+  - push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3          
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Run lint
+        run: npm lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3          
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3          
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying ..."
