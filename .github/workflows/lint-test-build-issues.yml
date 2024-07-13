@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run lint
-        run: echo "pretend running: npm lint"
+        run: echo "pretend running linter"
   test:
     runs-on: ubuntu-latest
     steps:
