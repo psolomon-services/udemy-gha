@@ -7,14 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: actions/checkout@v3
-        with:
-          repository: psolomon-services/udemy-gha
-          
+        uses: actions/checkout@v3          
       - name: Install NodeJS
-        uses: actions/setupnode@v3
-        #with:
-        #  node-version: '18'
+        uses: actions/setup-node@v4
       - name: Install dependencies
         run: npm ci
       - name: Run tests
