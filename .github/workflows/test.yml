@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          repository: psolomon-services/udemy-gha
+          
       - name: Install NodeJS
         uses: actions/setupnode@v3
         #with:
