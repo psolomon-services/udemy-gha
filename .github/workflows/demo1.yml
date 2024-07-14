@@ -1,0 +1,20 @@
+name: Demo1 Project
+on:
+  #- workflow_dispatch
+  - push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}"
+      - name: Get code
+        uses: actions/checkout@v4          
+      - name: Install dependencies
+        run: npm ci
+      - name: Test Code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy project
+        run: echo "Deploying..."
